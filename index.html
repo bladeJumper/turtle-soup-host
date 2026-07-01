@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#120f0a" />
+  <title>汤底别偷看</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">线下海龟汤主持题库</p>
+      <h1>汤底别偷看</h1>
+      <p class="subtitle">随机抽题、玩家模式、主持人折叠答案。手机打开就能玩。</p>
+    </div>
+    <div class="hero__actions">
+      <button id="randomBtn" class="btn btn--primary">随机来一碗</button>
+      <button id="resetPlayedBtn" class="btn btn--ghost">清空已玩</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel filters">
+      <label class="search"><span>搜索</span><input id="searchInput" type="search" placeholder="标题 / 标签 / 汤面" /></label>
+      <p class="filter-title">标签</p><div id="tagFilters" class="chips"></div>
+      <label class="search"><span>难度</span><select id="difficultyFilter"><option value="all">全部</option><option value="1">1 · 热身</option><option value="2">2 · 轻推理</option><option value="3">3 · 标准局</option><option value="4">4 · 硬一点</option><option value="5">5 · 地狱</option></select></label>
+      <label class="toggle-row"><input id="hidePlayedToggle" type="checkbox" /><span>隐藏已玩</span></label>
+      <div class="stats" id="stats"></div>
+    </aside>
+    <section class="content"><div id="puzzleList" class="grid" aria-live="polite"></div></section>
+  </main>
+
+  <dialog id="puzzleDialog" class="dialog">
+    <article class="sheet">
+      <button id="closeDialog" class="icon-btn" aria-label="关闭">×</button>
+      <p id="dialogMeta" class="eyebrow"></p>
+      <h2 id="dialogTitle"></h2>
+      <div id="dialogTags" class="chips chips--small"></div>
+      <section class="card card--surface"><p class="section-label">汤面 / 玩家可看</p><p id="dialogSurface" class="surface"></p></section>
+      <div class="mode-bar"><button id="copySurfaceBtn" class="btn btn--ghost">复制汤面</button><button id="markPlayedBtn" class="btn btn--ghost">标记已玩</button><button id="revealBtn" class="btn btn--danger">显示主持人信息</button></div>
+      <section id="hostPanel" class="host-panel" hidden>
+        <div class="card"><p class="section-label">汤底 / 不给玩家看</p><p id="dialogAnswer" class="answer"></p></div>
+        <div class="card"><p class="section-label">主持提示</p><ol id="dialogNotes" class="notes"></ol></div>
+      </section>
+    </article>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
