@@ -2,7 +2,8 @@ import json
 from pathlib import Path
 p = Path(__file__).with_name('puzzles.json')
 data = json.loads(p.read_text(encoding='utf-8'))
-assert isinstance(data, list) and len(data) >= 12
+assert isinstance(data, list) and len(data) == 100, f'expected 100 puzzles, got {len(data)}'
+assert all(x.get('title') != '电梯' for x in data), '电梯题 should be removed'
 ids = [x['id'] for x in data]
 assert len(ids) == len(set(ids)), 'duplicate ids'
 required = {'id','title','difficulty','tags','surface','answer','hostNotes','source'}
